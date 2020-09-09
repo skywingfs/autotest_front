@@ -8,13 +8,20 @@
           <img :src="scope.row.image" class="el-avatar">
         </template>
       </el-table-column>
-      <el-table-column prop="username" label="用户名" width="150px"/>
-      <el-table-column prop="name" label="姓名" width="100px"/>
-      <el-table-column prop="email" label="邮箱"/>
-      <el-table-column prop="mobile" label="手机号码" width="100px"/>
-      <el-table-column prop="department.name" label="部门" width="100px"/>
-      <el-table-column prop="position" label="职位" width="100px"/>
-      <el-table-column label="状态" width="50px">
+      <el-table-column prop="username" label="用户名" align="center"/>
+      <el-table-column prop="name" label="姓名" align="center"/>
+      <el-table-column prop="email" label="邮箱" align="center"/>
+      <el-table-column prop="mobile" label="手机号码" align="center"/>
+      <el-table-column prop="department.name" label="部门" align="center"/>
+      <el-table-column prop="position" label="职位" align="center"/>
+      <el-table-column  label="角色" width="150px" align="center">
+         <template slot-scope="scope">
+           <el-button-group v-for="(role,index) in scope.row.roles" :key="index">
+              <el-button size="mini" style="margin-top:5px" type="primary" plain round>{{role.name}}</el-button>
+           </el-button-group>
+        </template>
+      </el-table-column>  
+      <el-table-column label="状态" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.is_active ? '激活':'锁定' }}</span>
         </template>
